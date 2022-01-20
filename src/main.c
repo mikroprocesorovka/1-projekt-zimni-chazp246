@@ -22,6 +22,14 @@
 #define BTN_PUSH (GPIO_ReadInputPin(BTN_PORT, BTN_PIN)==RESET) 
 
 
+#define LIPO_PIN GPIO_PIN4
+#define LIPO_PORT GPIOB
+
+
+
+
+
+
 void setup(void)
 {
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);      // taktovani MCU na 16MHz
@@ -50,7 +58,6 @@ void setup(void)
     ADC2_Startup_Wait();  
 
 }
-
 
 
 int main(void)
