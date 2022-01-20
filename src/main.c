@@ -5,7 +5,8 @@
 //#include <cstdint>
 #include <stdio.h>
 #include "spse_stm8.h"
-#include "../lib/uart.c"
+#include "uart1.h"
+//#include "../lib/uart.c"
 
 #define _ISOC99_SOURCE
 #define _GNU_SOURCE
@@ -26,7 +27,7 @@ void setup(void)
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1);      // taktovani MCU na 16MHz
     GPIO_Init(LED_PORT, LED_PIN, GPIO_MODE_OUT_PP_LOW_SLOW);
     init_milis();
-    init_uart();
+    init_uart1();
 
 
     // na pinech/vstupech ADC_IN2 (PB2) a ADC_IN3 (PB3) vypneme vstupní buffer
