@@ -22,8 +22,26 @@
 #define BTN_PUSH (GPIO_ReadInputPin(BTN_PORT, BTN_PIN)==RESET) 
 
 
-#define LIPO_PIN GPIO_PIN4
-#define LIPO_PORT GPIOB
+#define LIPO_PIN1 GPIO_PIN0
+#define LIPO_PORT1 GPIOB
+
+#define LIPO_PIN2 GPIO_PIN1
+#define LIPO_PORT2 GPIOB
+
+#define LIPO_PIN3 GPIO_PIN2
+#define LIPO_PORT3 GPIOB
+
+#define LIPO_PIN4 GPIO_PIN3
+#define LIPO_PORT4 GPIOB
+
+#define LIPO_PIN5 GPIO_PIN4
+#define LIPO_PORT5 GPIOB
+
+#define LIPO_PIN6 GPIO_PIN5
+#define LIPO_PORT6 GPIOB
+
+#define LIPO_PIN7 GPIO_PIN6
+#define LIPO_PORT7 GPIOB
 
 
 
@@ -39,6 +57,10 @@ void setup(void)
 
 
     // na pinech/vstupech ADC_IN2 (PB2) a ADC_IN3 (PB3) vypneme vstupní buffer
+    ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL0, DISABLE);
+    ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL1, DISABLE);
+    ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL2, DISABLE);
+    ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL3, DISABLE);
     ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL4, DISABLE);
     ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL5, DISABLE);
 
@@ -58,6 +80,19 @@ void setup(void)
     ADC2_Startup_Wait();  
 
 }
+
+void all (void){
+    
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+    ADC2_Select_Channel(ADC2_CHANNEL_4);
+
+}
+
 
 
 int main(void)
