@@ -76,11 +76,16 @@ void all (void){
     uint32_t clanek4 = 0;
     uint32_t clanek5 = 0;
     uint32_t clanek6 = 0;
-
+    
+    
+    GPIO_Init(LIPO_PORT_GND, LIPO_PIN_GND, GPIO_MODE_OUT_PP_LOW_SLOW);
+    GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
+    clanek1 = ADC_get(ADC2_CHANNEL_1);
+    
     GPIO_Init(LIPO_PORT1, LIPO_PIN1, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT1, LIPO_PIN1);
-
-    clanek1 = ADC_get(ADC2_CHANNEL_1);
+    clanek2 = ADC_get(ADC2_CHANNEL_2);
+    
     GPIO_Init(LIPO_PORT2, LIPO_PIN2, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT2, LIPO_PIN2);
 
@@ -101,8 +106,7 @@ void all (void){
     GPIO_WriteLow(LIPO_PORT6, LIPO_PIN6);
 
     clanek6 = ADC_get(ADC2_CHANNEL_6);
-    GPIO_Init(LIPO_PORT_GND, LIPO_PIN_GND, GPIO_MODE_OUT_PP_LOW_SLOW);
-    GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
+
 }
 
 
