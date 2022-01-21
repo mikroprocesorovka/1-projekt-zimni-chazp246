@@ -70,6 +70,13 @@ void setup(void){
 
 
 void all (void){
+    uint32_t clanek1 = 0;
+    uint32_t clanek2 = 0;
+    uint32_t clanek3 = 0;
+    uint32_t clanek4 = 0;
+    uint32_t clanek5 = 0;
+    uint32_t clanek6 = 0;
+
     GPIO_Init(LIPO_PORT1, LIPO_PIN1, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT1, LIPO_PIN1);
 
@@ -77,41 +84,35 @@ void all (void){
     GPIO_Init(LIPO_PORT2, LIPO_PIN2, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT2, LIPO_PIN2);
 
+    clanek2 = ADC_get(ADC2_CHANNEL_2);
     GPIO_Init(LIPO_PORT3, LIPO_PIN3, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT3, LIPO_PIN3);
 
+    clanek3 = ADC_get(ADC2_CHANNEL_3);
     GPIO_Init(LIPO_PORT4, LIPO_PIN4, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT4, LIPO_PIN4);
 
+    clanek4 = ADC_get(ADC2_CHANNEL_4);
     GPIO_Init(LIPO_PORT5, LIPO_PIN5, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT5, LIPO_PIN5);
 
+    clanek5 = ADC_get(ADC2_CHANNEL_5);
     GPIO_Init(LIPO_PORT6, LIPO_PIN6, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT6, LIPO_PIN6);
 
+    clanek6 = ADC_get(ADC2_CHANNEL_6);
     GPIO_Init(LIPO_PORT_GND, LIPO_PIN_GND, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
-    
-    //GPIO_Init(LIPO_PIN7, LIPO_PORT7, GPIO_MODE_IN_FL_NO_IT);
 }
 
 
 
 int main(void){
+    setup(); //spustí funkci setup>>> ta zinicialuzuje další funkce
+
     uint32_t time = 0;
-    uint16_t rawADC = 0;
-    uint32_t napeti = 0;
-    uint32_t teplota = 0;
-    uint32_t clanek1 = 0;
-    uint32_t clanek2 = 0;
-    uint32_t clanek3 = 0;
-    uint32_t clanek4 = 0;
-    uint32_t clanek5 = 0;
-    uint32_t clanek6 = 0;
-    uint32_t test = 0;
 
 
-    setup();
     ////////////////dal jsi sem 0 tak to pak nehledej
     while (0) { 
 
@@ -131,18 +132,8 @@ int main(void){
         /*_delay_ms(333);*/
         /*printf("Funguje to!!!\n");*/
     }
-    
-    
-    while(1){
-        if (napeti == 0){
-            GPIO_Init(LIPO_PORT_GND, LIPO_PIN_GND, GPIO_MODE_OUT_PP_LOW_SLOW);
-            GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
-            test = ADC_get(ADC2_CHANNEL_0);
-            GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
-            napeti = 1;
-        }
-    }
 }
+
 
 /*-------------------------------  Assert -----------------------------------*/
 #include "__assert__.h"
