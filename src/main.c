@@ -46,6 +46,7 @@ void init_ADC(void){
     ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL3, DISABLE);
     ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL4, DISABLE);
     ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL5, DISABLE);
+    ADC2_SchmittTriggerConfig(ADC2_SCHMITTTRIG_CHANNEL6, DISABLE);
     //volba frekvence AD převodníku + CLOCK signálu
     ADC2_PrescalerConfig(ADC2_PRESSEL_FCPU_D4);
     //zarovnání
@@ -80,33 +81,46 @@ void all (void){
     
     GPIO_Init(LIPO_PORT_GND, LIPO_PIN_GND, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
-    clanek1 = ADC_get(ADC2_CHANNEL_1);
-    
+    clanek1 = ADC_get(ADC2_CHANNEL_1); //změří napětí mezi PB0 a PB1
+    ADC_get(ADC2_CHANNEL_0); //vypne 0 na PB0 a nastane stav velké impedance?
+    printf("clanek1 je %ld\r\n", clanek1);
+
     GPIO_Init(LIPO_PORT1, LIPO_PIN1, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT1, LIPO_PIN1);
     clanek2 = ADC_get(ADC2_CHANNEL_2);
-    
+    ADC_get(ADC2_CHANNEL_1);
+    printf("clanek2 je %ld\r\n", clanek2);
+
     GPIO_Init(LIPO_PORT2, LIPO_PIN2, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT2, LIPO_PIN2);
+    clanek3 = ADC_get(ADC2_CHANNEL_3);
+    ADC_get(ADC2_CHANNEL_2);
+    printf("clanek3 je %ld\r\n", clanek3);
 
-    clanek2 = ADC_get(ADC2_CHANNEL_2);
     GPIO_Init(LIPO_PORT3, LIPO_PIN3, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT3, LIPO_PIN3);
+    clanek4 = ADC_get(ADC2_CHANNEL_4);
+    ADC_get(ADC2_CHANNEL_3);
+    printf("clanek4 je %ld\r\n", clanek4);
 
-    clanek3 = ADC_get(ADC2_CHANNEL_3);
     GPIO_Init(LIPO_PORT4, LIPO_PIN4, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT4, LIPO_PIN4);
+    clanek5 = ADC_get(ADC2_CHANNEL_5);
+    ADC_get(ADC2_CHANNEL_4);
+    printf("clanek5 je %ld\r\n", clanek5);
 
-    clanek4 = ADC_get(ADC2_CHANNEL_4);
     GPIO_Init(LIPO_PORT5, LIPO_PIN5, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT5, LIPO_PIN5);
-
-    clanek5 = ADC_get(ADC2_CHANNEL_5);
+    clanek6 = ADC_get(ADC2_CHANNEL_6);
+    ADC_get(ADC2_CHANNEL_5);
+    printf("clanek6 je %ld\r\n", clanek6);
+    /*
     GPIO_Init(LIPO_PORT6, LIPO_PIN6, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT6, LIPO_PIN6);
-
     clanek6 = ADC_get(ADC2_CHANNEL_6);
-
+    ADC_get(ADC2_CHANNEL_0);
+    printf("clanek2 je %ld\r\n", clanek2);
+    */
 }
 
 
@@ -115,11 +129,17 @@ int main(void){
     setup(); //spustí funkci setup>>> ta zinicialuzuje další funkce
 
     uint32_t time = 0;
-
+    while (1){
+        if ((milis() - time) >= 1000){
+        time = milis();
+        all();
+        }
+    }
+    
 
     ////////////////dal jsi sem 0 tak to pak nehledej
     while (0) { 
-
+        /*
         if (milis() - time > 1000 ) { 
             time = milis();
             rawADC = ADC_get(ADC2_CHANNEL_4);
@@ -130,11 +150,9 @@ int main(void){
             printf("rawADC je %d\r\n", rawADC);
             printf("napeti je %ld\r\n", napeti);
             printf("teplota je %ld\r\n", teplota);
-        }
+        }*/
 
-        /*LED_FLIP; */
-        /*_delay_ms(333);*/
-        /*printf("Funguje to!!!\n");*/
+
     }
 }
 
