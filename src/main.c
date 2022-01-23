@@ -66,7 +66,7 @@ void setup(void){
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1); //Nastavení prescaleru
     init_milis(); //inicializuje knihovnu milis
     init_uart1(); //inicializuje VESTAVĚNÝ uart1
-    init_ADC(); //inicializace ADC
+    //init_ADC(); //inicializace ADC
 }
 
 
@@ -83,44 +83,44 @@ void all (void){
     GPIO_WriteLow(LIPO_PORT_GND, LIPO_PIN_GND);
     clanek1 = ADC_get(ADC2_CHANNEL_1); //změří napětí mezi PB0 a PB1
     ADC_get(ADC2_CHANNEL_0); //vypne 0 na PB0 a nastane stav velké impedance?
+    clanek1 = clanek1 * (uint32_t)5000 / 1024;
     printf("clanek1 je %ld\r\n", clanek1);
 
     GPIO_Init(LIPO_PORT1, LIPO_PIN1, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT1, LIPO_PIN1);
     clanek2 = ADC_get(ADC2_CHANNEL_2);
     ADC_get(ADC2_CHANNEL_1);
+    clanek2 = clanek2 * (uint32_t)5000 / 1024;
     printf("clanek2 je %ld\r\n", clanek2);
 
     GPIO_Init(LIPO_PORT2, LIPO_PIN2, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT2, LIPO_PIN2);
     clanek3 = ADC_get(ADC2_CHANNEL_3);
     ADC_get(ADC2_CHANNEL_2);
+    clanek3 = clanek3 * (uint32_t)5000 / 1024;
     printf("clanek3 je %ld\r\n", clanek3);
 
     GPIO_Init(LIPO_PORT3, LIPO_PIN3, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT3, LIPO_PIN3);
     clanek4 = ADC_get(ADC2_CHANNEL_4);
     ADC_get(ADC2_CHANNEL_3);
+    clanek4 = clanek4 * (uint32_t)5000 / 1024;
     printf("clanek4 je %ld\r\n", clanek4);
 
     GPIO_Init(LIPO_PORT4, LIPO_PIN4, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT4, LIPO_PIN4);
     clanek5 = ADC_get(ADC2_CHANNEL_5);
     ADC_get(ADC2_CHANNEL_4);
+    clanek5 = clanek5 * (uint32_t)5000 / 1024;
     printf("clanek5 je %ld\r\n", clanek5);
 
     GPIO_Init(LIPO_PORT5, LIPO_PIN5, GPIO_MODE_OUT_PP_LOW_SLOW);
     GPIO_WriteLow(LIPO_PORT5, LIPO_PIN5);
     clanek6 = ADC_get(ADC2_CHANNEL_6);
     ADC_get(ADC2_CHANNEL_5);
+    clanek6 = clanek6 * (uint32_t)5000 / 1024;
     printf("clanek6 je %ld\r\n", clanek6);
-    /*
-    GPIO_Init(LIPO_PORT6, LIPO_PIN6, GPIO_MODE_OUT_PP_LOW_SLOW);
-    GPIO_WriteLow(LIPO_PORT6, LIPO_PIN6);
-    clanek6 = ADC_get(ADC2_CHANNEL_6);
-    ADC_get(ADC2_CHANNEL_0);
-    printf("clanek2 je %ld\r\n", clanek2);
-    */
+
 }
 
 
