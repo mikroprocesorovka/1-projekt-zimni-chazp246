@@ -1,5 +1,9 @@
-Start STM8
+Původně měřič 6S lipo baterky --- STM8 RIP
 ====================
+
+STM8 nucleo shořelo :(
+
+
 
 Startovací strom zdrojových kódů pro výuku mikroprocesorové techniky s kitem
 [NUCLEO-8S208RB](https://www.st.com/en/evaluation-tools/nucleo-8s208rb.html).
