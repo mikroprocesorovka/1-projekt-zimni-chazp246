@@ -21,20 +21,7 @@ void setup(void){
     CLK_HSIPrescalerConfig(CLK_PRESCALER_HSIDIV1); //Nastavení prescaleru
     init_milis(); //inicializuje knihovnu milis
     init_uart1();
-   
-   /* GPIO_Init(LIPO_PORT5, LIPO_PIN5, GPIO_MODE_OUT_PP_LOW_SLOW);
-    GPIO_WriteLow(LIPO_PORT5, LIPO_PIN5);
-    printf("clanek6 je %ld\r\n", clanek6);*/
 }
-    
-
-
-
-    
-
-
-
-
 
 int main(void){
     setup(); //spustí funkci setup>>> ta zinicialuzuje další funkce
