@@ -28,6 +28,7 @@ int main(void){
     uint32_t first = 0;
     uint32_t second = 0;
     uint32_t speed;
+
     while (1){
         if(LD1_TRG){
             first = milis();
@@ -36,10 +37,9 @@ int main(void){
             second = milis();
         }
         
-        speed = 1000 / (second-first);
+        speed = 100 / (second-first);
     
         printf("rychlost: %ld\r\n", speed);
-        
 
 
         }
