@@ -29,7 +29,6 @@ int main(void){
     uint32_t second = 0;
     uint32_t speed1;
     uint32_t speed2;
-    uint32_t speed3;
 
     while (1){
         if(LD1_TRG){
@@ -40,10 +39,9 @@ int main(void){
         }
         
         speed1 = 100 / (second-first);
-        speed2 = 1000 / (second-first);
-        speed3 = 10000 / (second-first);
-        
-        printf("rychlost: %ld.%ld%ld\r\n", speed1, speed2, speed3);
+        speed2 = 100 / ((second-first)/100);
+
+        printf("rychlost: %ld.%ld%ld\r\n", speed1, speed2);
 
 
         }
