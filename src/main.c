@@ -41,7 +41,7 @@ int main(void){
         speed1 = 100 / (second-first);
         speed2 = 100 / ((second-first)/100);
 
-        printf("rychlost: %ld.%ld%ld\r\n", speed1, speed2);
+        printf("rychlost: %ld.%ld\r\n", speed1, speed2);
 
 
         }
