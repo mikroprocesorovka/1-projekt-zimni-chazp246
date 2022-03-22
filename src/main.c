@@ -27,7 +27,9 @@ int main(void){
     setup(); //spustí funkci setup>>> ta zinicialuzuje další funkce
     uint32_t first = 0;
     uint32_t second = 0;
-    uint32_t speed;
+    uint32_t speed1;
+    uint32_t speed2;
+    uint32_t speed3;
 
     while (1){
         if(LD1_TRG){
@@ -37,9 +39,11 @@ int main(void){
             second = milis();
         }
         
-        speed = 100 / (second-first);
-    
-        printf("rychlost: %ld\r\n", speed);
+        speed1 = 100 / (second-first);
+        speed2 = 1000 / (second-first);
+        speed3 = 10000 / (second-first);
+        
+        printf("rychlost: %ld.%ld%ld\r\n", speed1, speed2, speed3);
 
 
         }
